@@ -1,6 +1,12 @@
 ---
 name: rust-engineer
-description: "Implement, debug, refactor, optimize, and review Rust code with required pre-coding checks of applicable bundled rules and version-matched official documentation, followed by idiomatic implementation and focused verification. Use for Rust coding tasks in an existing or new crate."
+description: >
+  Use for every Rust programming or Rust development task. Provides an independent
+  engineering workflow with required bundled-rule and version-matched documentation
+  checks before coding, then implementation and verification. Covers planning,
+  explanation, design, debugging, review, testing, refactoring, optimization, and
+  Cargo/build/toolchain work. Also select when Rust is implied by .rs files, Cargo.toml,
+  Cargo.lock, rustc, crates, workspaces, or repository context.
 license: MIT
 ---
 

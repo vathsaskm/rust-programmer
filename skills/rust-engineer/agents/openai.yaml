@@ -1,4 +1,6 @@
 interface:
   display_name: "Rust Engineer"
-  short_description: "Rust with rules and documentation checked first"
+  short_description: "For every Rust programming and development task"
   default_prompt: "Use $rust-engineer to check repository constraints, read the applicable bundled rules, and verify version-matched official documentation before coding, then implement and verify this Rust task."
+policy:
+  allow_implicit_invocation: true

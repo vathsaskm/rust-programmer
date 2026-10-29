@@ -5,7 +5,7 @@
 [![Validation](https://github.com/vathsaskm/rust-programmer/actions/workflows/check.yml/badge.svg)](https://github.com/vathsaskm/rust-programmer/actions/workflows/check.yml)
 [![MIT License](https://img.shields.io/badge/license-MIT-f08052)](LICENSE)
 
-[Latest release](https://github.com/vathsaskm/rust-programmer/releases/latest) · [Download the agent](https://github.com/vathsaskm/rust-programmer/releases/download/v1.2.0/rust-engineer-v1.2.0.zip) · [Download the skill](https://github.com/vathsaskm/rust-programmer/releases/download/v1.2.0/rust-skills-v1.2.0.zip)
+[Latest release](https://github.com/vathsaskm/rust-programmer/releases/latest) · [Download the agent](https://github.com/vathsaskm/rust-programmer/releases/download/v1.2.1/rust-engineer-v1.2.1.zip) · [Download the skill](https://github.com/vathsaskm/rust-programmer/releases/download/v1.2.1/rust-skills-v1.2.1.zip)
 
 Rust Engineer helps an agent carry a Rust development task through investigation, implementation, and verification, using a complete bundled Rust best-practices reference. Rust Skills provides the original comprehensive guidance and examples for implementation, review, refactoring, and optimization.
 
@@ -26,21 +26,21 @@ Choose the package that fits your work. Each includes its own instructions, supp
 
 ### Download a release
 
-Get either ZIP from [v1.2.0](https://github.com/vathsaskm/rust-programmer/releases/tag/v1.2.0):
+Get either ZIP from [v1.2.1](https://github.com/vathsaskm/rust-programmer/releases/tag/v1.2.1):
 
-- [Rust Engineer](https://github.com/vathsaskm/rust-programmer/releases/download/v1.2.0/rust-engineer-v1.2.0.zip)
-- [Rust Skills](https://github.com/vathsaskm/rust-programmer/releases/download/v1.2.0/rust-skills-v1.2.0.zip)
-- [SHA-256 checksums](https://github.com/vathsaskm/rust-programmer/releases/download/v1.2.0/SHA256SUMS)
+- [Rust Engineer](https://github.com/vathsaskm/rust-programmer/releases/download/v1.2.1/rust-engineer-v1.2.1.zip)
+- [Rust Skills](https://github.com/vathsaskm/rust-programmer/releases/download/v1.2.1/rust-skills-v1.2.1.zip)
+- [SHA-256 checksums](https://github.com/vathsaskm/rust-programmer/releases/download/v1.2.1/SHA256SUMS)
 
 Compare your download's SHA-256 digest with the matching entry in `SHA256SUMS`, then extract the selected ZIP into your Codex skill directory. On macOS:
 
 ```sh
-shasum -a 256 rust-engineer-v1.2.0.zip
+shasum -a 256 rust-engineer-v1.2.1.zip
 mkdir -p "$HOME/.agents/skills"
-unzip rust-engineer-v1.2.0.zip -d "$HOME/.agents/skills"
+unzip rust-engineer-v1.2.1.zip -d "$HOME/.agents/skills"
 ```
 
-For Rust Skills, use `rust-skills-v1.2.0.zip` instead. Review an existing installation before replacing it.
+For Rust Skills, use `rust-skills-v1.2.1.zip` instead. Review an existing installation before replacing it.
 
 ### Install from source
 
@@ -65,6 +65,14 @@ cp -R skills/rust-skills "$HOME/.agents/skills/"
 For project-specific use, copy the selected folder into that project's `.agents/skills/` directory. If Codex does not discover it automatically, restart Codex. See the [official installation and invocation documentation](https://learn.chatgpt.com/docs/build-skills).
 
 Rust Engineer is an agent workflow distributed in a Codex skill folder. Its optional display metadata configures how it appears in the app; your host supplies the model, tools, and execution permissions. Other agents can read the Markdown instructions, with installation and invocation adapted to their host.
+
+## Automatic selection
+
+Both packages describe themselves as applicable to every Rust programming or development task. Their descriptions also cover Rust inferred from `.rs` files, `Cargo.toml`, `Cargo.lock`, `rustc`, or the repository context, even when the prompt does not name the language.
+
+Each package explicitly allows implicit invocation in Codex. The descriptions make their purpose visible to the model: Rust Engineer provides the engineering workflow and pre-coding checks; Rust Skills provides the comprehensive reference and examples. The host must expose the installed skill and decides when to invoke it; descriptions cannot force every LLM host or API call to load a skill. See the [official invocation documentation](https://learn.chatgpt.com/docs/build-skills).
+
+Use `$rust-engineer` or `$rust-skills` in Codex when you want to select a package explicitly.
 
 ## Use the agent
 
@@ -102,7 +110,7 @@ Start with the [skill index](skills/rust-skills/SKILL.md) and load the supportin
 
 ## Independence and release quality
 
-Each ZIP is validated in isolation, with the other package absent. Rust Engineer carries its own complete copy of the best-practices reference and examples; it does not require a separate installation. Rust Skills retains its original complete manifest and supporting material. Documentation references stay within their package or point to public reference material.
+Each ZIP is validated in isolation, with the other package absent. Rust Engineer carries its own complete copy of the best-practices reference and examples; it does not require a separate installation. Rust Skills retains the complete original guidance and supporting material, with its discovery description adapted for broad Rust-task selection. Documentation references stay within their package or point to public reference material.
 
 Repository validation also compares the embedded index, examples, and upstream license against the original source, so packaging changes cannot silently drop or shorten the guidance.
 

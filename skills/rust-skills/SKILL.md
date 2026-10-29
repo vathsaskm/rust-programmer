@@ -1,12 +1,12 @@
 ---
 name: rust-skills
 description: >
-  Comprehensive Rust coding guidelines with 265 rules across 26 categories.
-  Use when writing, reviewing, or refactoring Rust code. Covers ownership,
-  error handling, async patterns, concurrency, unsafe code, API design, memory
-  optimization, performance, numeric safety, conversions, serde, pattern
-  matching, macros, closures, observability, testing, and common anti-patterns.
-  Invoke with /rust-skills.
+  Use for every Rust programming or Rust development task. Provides comprehensive best-
+  practice guidance and detailed examples for correct, idiomatic, safe, and efficient
+  Rust. Consult during planning, explanation, design, implementation, debugging, review,
+  testing, refactoring, optimization, and Cargo/build/toolchain work. Also select when
+  Rust is implied by .rs files, Cargo.toml, Cargo.lock, rustc, crates, workspaces, or
+  repository context.
 license: MIT
 metadata:
   author: leonardomso

@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.2.1 — 2026-10-29
+
+- Broaden both discovery descriptions to every Rust programming or development task, including Rust inferred from source files, Cargo manifests, or repository context.
+- State each package's purpose clearly in the metadata the model reads before selecting a skill.
+- Explicitly allow implicit invocation in both packages and add standalone display metadata for Rust Skills.
+- Preserve the engineering gates, complete guidance bodies, examples, licenses, and independent installation.
+- Document that automatic selection depends on the host exposing and selecting the installed skills.
+
 ## v1.2.0 — 2026-10-29
 
 - Require repository, rules, and documentation checks before Rust code is written or changed.

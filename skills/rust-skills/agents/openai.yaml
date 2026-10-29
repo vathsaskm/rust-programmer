@@ -1,0 +1,6 @@
+interface:
+  display_name: "Rust Skills"
+  short_description: "Best-practice guidance for every Rust development task"
+  default_prompt: "Use $rust-skills for this Rust programming or development task, consulting the relevant comprehensive guidance and detailed examples."
+policy:
+  allow_implicit_invocation: true
