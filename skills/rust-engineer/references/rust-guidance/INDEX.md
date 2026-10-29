@@ -450,6 +450,10 @@ This skill provides rule identifiers for quick reference. When generating or rev
 
 ---
 
+## Library selection
+
+When deciding which Rust library fits a task, consult the [library-selection work matrix](references/library-selection.md) and the matching category in [Blessed.rs](https://blessed.rs/crates). Check existing project dependencies and standard-library support first, then verify the selected candidate against its official versioned documentation, actual project constraints, and required features. Record the reason for introducing or replacing a dependency.
+
 ## Sources & Attribution
 
 This skill is an independent synthesis of official Rust guidance, well-known books, and patterns from widely-used crates. It is not affiliated with or endorsed by the Rust project or any crate author; the text and code examples are original.

@@ -5,7 +5,7 @@
 [![Validation](https://github.com/vathsaskm/rust-programmer/actions/workflows/check.yml/badge.svg)](https://github.com/vathsaskm/rust-programmer/actions/workflows/check.yml)
 [![MIT License](https://img.shields.io/badge/license-MIT-f08052)](LICENSE)
 
-[Latest release](https://github.com/vathsaskm/rust-programmer/releases/latest) · [Download the agent](https://github.com/vathsaskm/rust-programmer/releases/download/v1.2.1/rust-engineer-v1.2.1.zip) · [Download the skill](https://github.com/vathsaskm/rust-programmer/releases/download/v1.2.1/rust-skills-v1.2.1.zip)
+[Latest release](https://github.com/vathsaskm/rust-programmer/releases/latest) · [Download the agent](https://github.com/vathsaskm/rust-programmer/releases/download/v1.3.0/rust-engineer-v1.3.0.zip) · [Download the skill](https://github.com/vathsaskm/rust-programmer/releases/download/v1.3.0/rust-skills-v1.3.0.zip)
 
 Rust Engineer helps an agent carry a Rust development task through investigation, implementation, and verification, using a complete bundled Rust best-practices reference. Rust Skills provides the original comprehensive guidance and examples for implementation, review, refactoring, and optimization.
 
@@ -26,21 +26,21 @@ Choose the package that fits your work. Each includes its own instructions, supp
 
 ### Download a release
 
-Get either ZIP from [v1.2.1](https://github.com/vathsaskm/rust-programmer/releases/tag/v1.2.1):
+Get either ZIP from [v1.3.0](https://github.com/vathsaskm/rust-programmer/releases/tag/v1.3.0):
 
-- [Rust Engineer](https://github.com/vathsaskm/rust-programmer/releases/download/v1.2.1/rust-engineer-v1.2.1.zip)
-- [Rust Skills](https://github.com/vathsaskm/rust-programmer/releases/download/v1.2.1/rust-skills-v1.2.1.zip)
-- [SHA-256 checksums](https://github.com/vathsaskm/rust-programmer/releases/download/v1.2.1/SHA256SUMS)
+- [Rust Engineer](https://github.com/vathsaskm/rust-programmer/releases/download/v1.3.0/rust-engineer-v1.3.0.zip)
+- [Rust Skills](https://github.com/vathsaskm/rust-programmer/releases/download/v1.3.0/rust-skills-v1.3.0.zip)
+- [SHA-256 checksums](https://github.com/vathsaskm/rust-programmer/releases/download/v1.3.0/SHA256SUMS)
 
 Compare your download's SHA-256 digest with the matching entry in `SHA256SUMS`, then extract the selected ZIP into your Codex skill directory. On macOS:
 
 ```sh
-shasum -a 256 rust-engineer-v1.2.1.zip
+shasum -a 256 rust-engineer-v1.3.0.zip
 mkdir -p "$HOME/.agents/skills"
-unzip rust-engineer-v1.2.1.zip -d "$HOME/.agents/skills"
+unzip rust-engineer-v1.3.0.zip -d "$HOME/.agents/skills"
 ```
 
-For Rust Skills, use `rust-skills-v1.2.1.zip` instead. Review an existing installation before replacing it.
+For Rust Skills, use `rust-skills-v1.3.0.zip` instead. Review an existing installation before replacing it.
 
 ### Install from source
 
@@ -108,9 +108,15 @@ requirements and explain the alternatives.
 
 Start with the [skill index](skills/rust-skills/SKILL.md) and load the supporting material relevant to the task. Apply it in the context of the actual compiler, library version, and repository conventions.
 
+## Choosing libraries
+
+When choosing, adding, or replacing a Rust library, consult the bundled [work matrix](skills/rust-skills/references/library-selection.md) and the relevant category in [Blessed.rs](https://blessed.rs/crates). The agent includes its own complete [copy](skills/rust-engineer/references/rust-guidance/references/library-selection.md).
+
+Start with standard-library support and the project's existing dependencies. Use the catalog to shortlist candidates, then verify their official versioned documentation and fit with the compiler, runtime, target, features, and project constraints. Record the selected crate and rationale before implementation. If the catalog is unavailable, report that limitation and continue with the bundled matrix and primary sources.
+
 ## Independence and release quality
 
-Each ZIP is validated in isolation, with the other package absent. Rust Engineer carries its own complete copy of the best-practices reference and examples; it does not require a separate installation. Rust Skills retains the complete original guidance and supporting material, with its discovery description adapted for broad Rust-task selection. Documentation references stay within their package or point to public reference material.
+Each ZIP is validated in isolation, with the other package absent. Rust Engineer carries its own complete copy of the best-practices reference and examples; it does not require a separate installation. Rust Skills retains the complete original guidance and supporting material, with discovery metadata adapted for broad Rust-task selection and an added library-selection reference. Documentation references stay within their package or point to public reference material.
 
 Repository validation also compares the embedded index, examples, and upstream license against the original source, so packaging changes cannot silently drop or shorten the guidance.
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.3.0 — 2026-10-29
+
+- Consult Blessed.rs when selecting, adding, or replacing Rust libraries.
+- Include a sourced task-to-library work matrix and project-specific comparison questions in each independent package.
+- Require the dependency rationale, version/features, primary documentation, and project fit to be established before implementation.
+- Preserve all original guidance and examples, and add byte-for-byte checks for the new bundled reference.
+- Provide a transparent fallback when the catalog is unavailable while retaining the primary-documentation gate.
+
 ## v1.2.1 — 2026-10-29
 
 - Broaden both discovery descriptions to every Rust programming or development task, including Rust inferred from source files, Cargo manifests, or repository context.

@@ -93,7 +93,10 @@ def inspect_package(root, errors):
     if name == "rust-engineer":
         required += [root / "agents/openai.yaml", root / "references/official-rust.md",
                      root / "references/rust-guidance/INDEX.md", root / "references/rust-guidance/LICENSE",
-                     root / "references/rust-guidance/ATTRIBUTION.md"]
+                     root / "references/rust-guidance/ATTRIBUTION.md",
+                     root / "references/rust-guidance/references/library-selection.md"]
+    else:
+        required += [root / "references/library-selection.md"]
     for path in required:
         if not path.is_file():
             errors.append(f"{name}: missing required file {path.name}")
@@ -134,7 +137,10 @@ def inspect_guidance_preservation(root, errors):
         body = re.sub(r"\A---\n.*?\n---\n\n?", "", manifest.read_text(encoding="utf-8"), count=1, flags=re.S)
         if body != index.read_text(encoding="utf-8"):
             errors.append("Bundled guidance index differs from the complete original body")
-    for relative in [Path("LICENSE")] + sorted(path.relative_to(source) for path in (source / "rules").glob("*.md")):
+    preserved = [Path("LICENSE")]
+    preserved += sorted(path.relative_to(source) for path in (source / "rules").glob("*.md"))
+    preserved += sorted(path.relative_to(source) for path in (source / "references").rglob("*.md"))
+    for relative in preserved:
         original = source / relative
         copied = bundled / relative
         if not copied.is_file() or original.read_bytes() != copied.read_bytes():

@@ -32,6 +32,8 @@ Connect the selected rule identifiers to concrete implementation decisions: owne
 
 ### 3. Verify the relevant documentation
 
+When selecting, adding, or replacing a library, read the bundled [library-selection work matrix](references/rust-guidance/references/library-selection.md) and consult the relevant live category in [Blessed.rs](https://blessed.rs/crates). Check standard-library support and existing project dependencies first. Use the catalog to discover candidates, then establish the selected crate's fit from its own documentation and the project's constraints. Follow the matrix's fallback if the catalog is unavailable.
+
 Read the primary documentation that determines the planned implementation. For language semantics and standard-library contracts, open the relevant official Rust documentation. Use the [official Rust reference map](references/official-rust.md) to locate it; the map itself is a starting point, not a substitute for reading the source.
 
 For a crate API or version-sensitive behavior, use Context7 when available to locate documentation, then verify against the crate's own versioned documentation or source for the resolved dependency and feature configuration. Check compatibility with the actual compiler and MSRV. If current online documentation targets a newer version, use installed toolchain documentation or the matching dependency source to establish the contract you will rely on.
@@ -42,7 +44,7 @@ If a lookup fails, report the actual failure and try another available primary s
 
 ### 4. Record the decision and proceed
 
-Before the first code edit, give a concise progress update naming the rule identifiers read, the documentation actually consulted with links or local paths and applicable versions, the resulting design constraints or resolved tradeoffs, and the verification approach. Keep it proportional to the task; reuse evidence already checked for the same scope and versions.
+Before the first code edit, give a concise progress update naming the rule identifiers read, the documentation actually consulted with links or local paths and applicable versions, the resulting design constraints or resolved tradeoffs, and the verification approach. For a dependency decision, include the work area, catalog category consulted or the failed lookup, selected crate/version/features, and why it fits better than the existing approach or another plausible candidate. Keep it proportional to the task; reuse evidence already checked for the same scope and versions.
 
 The gate passes when the intended behavior is understood, applicable detailed rules have been read, the contracts needed for the implementation are verified for the target versions, material conflicts are resolved, and the checks for the change are identified. Proceed with implementation once these conditions are met. Revisit the affected checks when the scope, dependency version, feature configuration, or safety assumptions change.
 

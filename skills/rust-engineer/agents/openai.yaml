@@ -1,6 +1,6 @@
 interface:
   display_name: "Rust Engineer"
   short_description: "For every Rust programming and development task"
-  default_prompt: "Use $rust-engineer to check repository constraints, read the applicable bundled rules, and verify version-matched official documentation before coding, then implement and verify this Rust task."
+  default_prompt: "Use $rust-engineer to check repository constraints, read the applicable bundled rules, and verify version-matched official documentation before coding, then implement and verify this Rust task. When choosing libraries, consult the bundled library-selection matrix and Blessed.rs, then verify primary documentation."
 policy:
   allow_implicit_invocation: true

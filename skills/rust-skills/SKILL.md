@@ -1,8 +1,8 @@
 ---
 name: rust-skills
 description: >
-  Use for every Rust programming or Rust development task. Provides comprehensive best-
-  practice guidance and detailed examples for correct, idiomatic, safe, and efficient
+  Use for every Rust programming or Rust development task. Provides comprehensive best-practice
+  guidance and detailed examples for correct, idiomatic, safe, and efficient
   Rust. Consult during planning, explanation, design, implementation, debugging, review,
   testing, refactoring, optimization, and Cargo/build/toolchain work. Also select when
   Rust is implied by .rs files, Cargo.toml, Cargo.lock, rustc, crates, workspaces, or
@@ -470,6 +470,10 @@ This skill provides rule identifiers for quick reference. When generating or rev
 | Code review | `anti-`, `lint-` |
 
 ---
+
+## Library selection
+
+When deciding which Rust library fits a task, consult the [library-selection work matrix](references/library-selection.md) and the matching category in [Blessed.rs](https://blessed.rs/crates). Check existing project dependencies and standard-library support first, then verify the selected candidate against its official versioned documentation, actual project constraints, and required features. Record the reason for introducing or replacing a dependency.
 
 ## Sources & Attribution
 
