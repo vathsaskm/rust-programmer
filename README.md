@@ -1,25 +1,48 @@
 # Rust
 
-**A practical Rust engineering workflow. A searchable library of 265 Rust rules. Install either one.**
+**Independent agent and skill packages for practical Rust development.**
 
-[Get the latest release](https://github.com/vathsaskm/Rust/releases/latest) · [Rust Engineer](skills/rust-engineer/SKILL.md) · [Rust Skills](skills/rust-skills/SKILL.md) · [MIT license](LICENSE)
+[![Validation](https://github.com/vathsaskm/Rust/actions/workflows/check.yml/badge.svg)](https://github.com/vathsaskm/Rust/actions/workflows/check.yml)
+[![MIT License](https://img.shields.io/badge/license-MIT-f08052)](LICENSE)
 
-Give your coding agent a repeatable way to build, debug, refactor, and review Rust. Choose the engineering workflow, the detailed guidelines, or both. Each package works independently and includes its own supporting files and license.
+[Latest release](https://github.com/vathsaskm/Rust/releases/latest) · [Download the agent](https://github.com/vathsaskm/Rust/releases/download/v1.0.1/rust-engineer-v1.0.1.zip) · [Download the skill](https://github.com/vathsaskm/Rust/releases/download/v1.0.1/rust-skills-v1.0.1.zip)
 
-## Choose your package
+Rust Engineer helps an agent carry a Rust development task through investigation, implementation, and verification. Rust Skills provides focused guidance and examples for understanding code and making design decisions.
 
-| Package | What it gives you | Use it when |
+Choose the package that fits your work. Each includes its own instructions, supporting content, and license, and installs on its own.
+
+![Rust Engineer and Rust Skills are separate, complete packages with no dependency between them.](docs/assets/independent-packages.svg)
+
+## Choose what you need
+
+| | Rust Engineer · Agent | Rust Skills · Skill |
 | --- | --- | --- |
-| **Rust Engineer** | An engineering brief covering repository context, ownership, APIs, errors, async work, unsafe code, and focused verification | You want the agent to carry a Rust task from investigation through checked changes |
-| **Rust Skills** | 265 rules across 26 categories, with examples and an index | You want detailed guidance for a specific design, implementation, or review decision |
+| **Purpose** | Carry a Rust task through to a verified result | Explain a Rust concept or support a specific design decision |
+| **Typical work** | Implementation, debugging, refactoring, and code review | Targeted explanations, examples, and tradeoff analysis |
+| **Included** | Engineering instructions, a reference map, display metadata, and a license | A searchable guidance index, supporting examples, and a license |
+| **Installation** | Install the agent package by itself | Install the skill package by itself |
 
-Rust Engineer is packaged as a Codex skill with agent-facing instructions and optional UI metadata. Its `agents/openai.yaml` describes how the skill appears in the app. Each host supplies the model, tools, and execution permissions.
+## Install
 
-There are no references between the two packages, shared files, required companion skills, bundled credentials, or installation scripts. Preferred documentation integrations are optional. Normal Rust development still needs the project's compiler, dependencies, and any services the task uses.
+### Download a release
 
-## Install in Codex
+Get either ZIP from [v1.0.1](https://github.com/vathsaskm/Rust/releases/tag/v1.0.1):
 
-Clone the repository:
+- [Rust Engineer](https://github.com/vathsaskm/Rust/releases/download/v1.0.1/rust-engineer-v1.0.1.zip)
+- [Rust Skills](https://github.com/vathsaskm/Rust/releases/download/v1.0.1/rust-skills-v1.0.1.zip)
+- [SHA-256 checksums](https://github.com/vathsaskm/Rust/releases/download/v1.0.1/SHA256SUMS)
+
+Compare your download's SHA-256 digest with the matching entry in `SHA256SUMS`, then extract the selected ZIP into your Codex skill directory. On macOS:
+
+```sh
+shasum -a 256 rust-engineer-v1.0.1.zip
+mkdir -p "$HOME/.agents/skills"
+unzip rust-engineer-v1.0.1.zip -d "$HOME/.agents/skills"
+```
+
+For Rust Skills, use `rust-skills-v1.0.1.zip` instead. Review an existing installation before replacing it.
+
+### Install from source
 
 ```sh
 git clone https://github.com/vathsaskm/Rust.git
@@ -27,108 +50,70 @@ cd Rust
 mkdir -p "$HOME/.agents/skills"
 ```
 
-Install **Rust Engineer**:
+Install the agent:
 
 ```sh
 cp -R skills/rust-engineer "$HOME/.agents/skills/"
 ```
 
-Or install **Rust Skills**:
+Or install the skill:
 
 ```sh
 cp -R skills/rust-skills "$HOME/.agents/skills/"
 ```
 
-Run both copy commands if you want both packages. Review existing installations before replacing them.
+For project-specific use, copy the selected folder into that project's `.agents/skills/` directory. If Codex does not discover it automatically, restart Codex. See the [official installation and invocation documentation](https://learn.chatgpt.com/docs/build-skills).
 
-For a project-specific installation, copy the selected folder into that project's `.agents/skills/` directory instead.
+Rust Engineer is an agent workflow distributed in a Codex skill folder. Its optional display metadata configures how it appears in the app; your host supplies the model, tools, and execution permissions. Other agents can read the Markdown instructions, with installation and invocation adapted to their host.
 
-Codex discovers skills in these locations. If a newly installed skill does not appear, restart Codex. See the [official skill documentation](https://learn.chatgpt.com/docs/build-skills) for discovery, invocation, and configuration.
-
-### Install from a release ZIP
-
-Download either package from [Releases](https://github.com/vathsaskm/Rust/releases/latest), verify it against `SHA256SUMS`, and extract it into your skill directory. Each ZIP contains one top-level skill folder, including its license and supporting resources.
-
-On macOS:
-
-```sh
-shasum -a 256 rust-engineer-v1.0.0.zip
-unzip rust-engineer-v1.0.0.zip -d "$HOME/.agents/skills"
-```
-
-For Rust Skills, substitute `rust-skills-v1.0.0.zip`. Compare the printed checksum with the corresponding entry in `SHA256SUMS` before extraction.
-
-## Put it to work
-
-Mention the installed skill in your Codex prompt:
+## Use the agent
 
 ```text
-Use $rust-engineer to fix this borrow-checker error. Preserve the public API
-and run the checks appropriate to the affected crate.
+Use $rust-engineer to investigate this compiler error and implement a fix.
+Preserve the public API and verify the affected behavior.
 ```
 
 ```text
-Use $rust-engineer to review this Rust diff. Report actionable findings with
-file and line evidence, and explain which checks you actually ran.
+Use $rust-engineer to review this Rust change. Explain actionable findings
+with file and line evidence, and report the checks actually performed.
+```
+
+![The engineering workflow moves from understanding the request, through design and implementation, to verification and a clear handoff.](docs/assets/engineering-workflow.svg)
+
+## Use the skill
+
+```text
+Use $rust-skills to help me understand the ownership choices in this module.
+Show relevant examples and explain the tradeoffs for this code.
 ```
 
 ```text
-Use $rust-skills to review ownership and error handling in this module.
-Read only the rules relevant to the code and explain the concrete tradeoffs.
+Use $rust-skills to assess this API design against the crate's compatibility
+requirements and explain the alternatives.
 ```
 
-The instructions are plain Markdown with `SKILL.md` manifests. Other agents can read them, but their installation paths, invocation syntax, and metadata support depend on the host.
+Start with the [skill index](skills/rust-skills/SKILL.md) and load the supporting material relevant to the task. Apply it in the context of the actual compiler, library version, and repository conventions.
 
-## What the engineer does
+## Independence and release quality
 
-1. Reads repository instructions, callers, tests, the manifest, and the pinned toolchain.
-2. Checks language and library contracts against the relevant official sources.
-3. Implements a scoped change that preserves the intended behavior and compatibility.
-4. Runs appropriate formatting, tests, and lint checks, then reports the outcome and limitations.
+Each ZIP is validated in isolation, with the other package absent. Documentation references stay within their package or point to public reference material. There are no shared package files or cross-package imports.
 
-It keeps ownership and lifetimes explicit, expected failures recoverable, concurrent work bounded where needed, and unsafe operations tied to a specific safety argument. Verification follows the repository's requirements and the risk of the change.
+Releases include separate archives and SHA-256 checksums. Validation covers package structure, local references, archive metadata, and common private-data patterns. Gitleaks scans published files, Git history, and release archives; GitHub repeats validation and scanning in CI.
 
-## What the rules cover
+The packages contain no account credentials or machine configuration. Scan results describe the checks performed and do not establish an unconditional security guarantee. See [SECURITY.md](SECURITY.md) for details and private reporting.
 
-Ownership and borrowing · error handling · memory · unsafe code · API design · async · concurrency · compiler optimization · numeric safety · type safety · traits · conversions · const evaluation · Serde · pattern matching · macros · closures · collections · naming · testing · documentation · observability · performance · project structure · linting · anti-patterns.
+## Explore the project
 
-Start with the [rule index](skills/rust-skills/SKILL.md), then open the relevant rule files. These guidelines need judgment: check the actual compiler, crate version, public contract, and project conventions before applying an example.
-
-## Repository layout
-
-```text
-skills/
-  rust-engineer/
-    SKILL.md
-    LICENSE
-    agents/openai.yaml
-    references/official-rust.md
-  rust-skills/
-    SKILL.md
-    LICENSE
-    rules/                 # 265 Markdown rules
-scripts/verify_release.py   # Structure, independence, and privacy checks
-.github/workflows/check.yml # Validation and secret scanning
-```
-
-## Release checks
-
-Run the package validator and [Gitleaks](https://github.com/gitleaks/gitleaks) before publishing:
-
-```sh
-python3 scripts/verify_release.py
-gitleaks dir . --redact --ignore-gitleaks-allow
-gitleaks git . --redact --ignore-gitleaks-allow
-```
-
-The validator checks both packages in isolation, local documentation links, file types, and common private-data patterns. CI repeats validation and scans Git history with a pinned Gitleaks version. Release ZIPs include package files only, use normalized metadata, and ship with SHA-256 checksums.
-
-See [SECURITY.md](SECURITY.md) for the review scope and private reporting guidance. Automated checks and review reduce risk; they cannot prove the absence of every possible secret.
+- [Agent instructions](skills/rust-engineer/SKILL.md)
+- [Agent reference map](skills/rust-engineer/references/official-rust.md)
+- [Skill index](skills/rust-skills/SKILL.md)
+- [Release history](CHANGELOG.md)
+- [Validation script](scripts/verify_release.py)
 
 ## License and attribution
 
-The original Rust Engineer package and repository materials are available under the [MIT license](LICENSE).
+Rust Engineer and the original repository materials are available under the [MIT license](LICENSE).
 
-Rust Skills is derived from [leonardomso/rust-skills](https://github.com/leonardomso/rust-skills). The bundled manifest identifies version `1.5.1`; this repository distributes a local snapshot rather than claiming to mirror an upstream release. Its original [MIT license and copyright notice](skills/rust-skills/LICENSE) are preserved. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Rust Skills includes an attributed snapshot derived from [leonardomso/rust-skills](https://github.com/leonardomso/rust-skills). Its original [license](skills/rust-skills/LICENSE) and attribution are preserved. See [third-party notices](THIRD_PARTY_NOTICES.md) for provenance.
 
-This is an independent project. The Rust project, OpenAI, and referenced crate authors have not endorsed it.
+This independent project is not endorsed by the Rust project, OpenAI, or referenced crate authors.

@@ -7,6 +7,7 @@ import sys
 from collections import Counter
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
+from xml.etree import ElementTree
 
 
 PACKAGE_NAMES = ("rust-engineer", "rust-skills")
@@ -15,9 +16,33 @@ CONTACT = re.compile(r"[A-Za-z0-9_.+%-]+@([A-Za-z0-9.-]+\.[A-Za-z]{2,})")
 HOME_PATH = re.compile(r"(?:/Users/|/home/)[A-Za-z0-9_.-]+/")
 WINDOWS_HOME = re.compile(r"[A-Za-z]:\\Users\\[A-Za-z0-9_.-]+\\")
 AUTH_URL = re.compile(r"(?:https?|postgres(?:ql)?|mysql|redis)://[^\s/:'\"]+:[^\s/@'\"]+@")
-LINK = re.compile(r"(?<!!)\[[^\]\n]*\]\(([^\s)]+)(?:\s+\"[^\"]*\")?\)")
+LINK = re.compile(r"!?\[[^\]\n]*\]\(([^\s)]+)(?:\s+\"[^\"]*\")?\)")
 ALLOWED_EMAIL_DOMAINS = {"example.com", "example.org", "example.net", "users.noreply.github.com"}
-ALLOWED_SUFFIXES = {".md", ".yaml", ".yml", ".py"}
+ALLOWED_SUFFIXES = {".md", ".yaml", ".yml", ".py", ".svg"}
+
+
+def inspect_svg(path, content, errors):
+    namespace = "http://www.w3.org/2000/svg"
+    allowed = {"svg", "g", "rect", "circle", "line", "path", "polyline", "polygon", "text", "tspan", "title", "desc"}
+    if "<!DOCTYPE" in content.upper() or "<!ENTITY" in content.upper() or "<?" in content:
+        errors.append(f"{path.name}: SVG document declarations are unsupported")
+        return
+    try:
+        root = ElementTree.fromstring(content)
+    except ElementTree.ParseError:
+        errors.append(f"{path.name}: invalid SVG")
+        return
+    if root.tag != f"{{{namespace}}}svg":
+        errors.append(f"{path.name}: missing SVG root")
+    if root.find(f"{{{namespace}}}title") is None or root.find(f"{{{namespace}}}desc") is None:
+        errors.append(f"{path.name}: missing accessible title or description")
+    for node in root.iter():
+        if node.tag not in {f"{{{namespace}}}{name}" for name in allowed}:
+            errors.append(f"{path.name}: unsupported SVG element")
+        for key, value in node.attrib.items():
+            attribute = key.rsplit("}", 1)[-1].lower()
+            if attribute.startswith("on") or attribute in {"href", "src", "style"} or "url(" in value.lower():
+                errors.append(f"{path.name}: active SVG content or external resource")
 
 
 def files_in(root):
@@ -120,6 +145,8 @@ def main():
             errors.append(f"{path.name}: non-text content")
             continue
         inspect_text(path, content, errors)
+        if path.suffix == ".svg":
+            inspect_svg(path, content, errors)
         if not args.package and path.suffix == ".md":
             inspect_links(path, content, root, errors)
     packages = [root] if args.package else [root / "skills" / name for name in PACKAGE_NAMES]

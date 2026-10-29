@@ -8,7 +8,7 @@
 - License: MIT.
 - Original notice: Copyright (c) 2025 Leonardo Maldonado.
 
-The upstream author's manifest metadata and complete license are preserved. This is a bundled local snapshot; its manifest version is not a guarantee of byte-for-byte equality with an upstream tag. The bundled rule text and index are unchanged from that snapshot.
+The upstream author's manifest metadata and complete license are preserved. This is a bundled local snapshot; its manifest version is not a guarantee of byte-for-byte equality with an upstream tag. The bundled guidance files and index are unchanged from that snapshot.
 
 Rust Engineer and Rust Skills are independently usable. Neither package imports, requires, or links to the other.
 
