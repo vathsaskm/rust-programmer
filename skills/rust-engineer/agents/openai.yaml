@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rust Engineer"
+  short_description: "Idiomatic Rust with focused, practical checks"
+  default_prompt: "Use $rust-engineer to implement this Rust task using official documentation and focused verification."
