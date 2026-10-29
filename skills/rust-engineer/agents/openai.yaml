@@ -1,4 +1,4 @@
 interface:
   display_name: "Rust Engineer"
-  short_description: "Idiomatic Rust with focused, practical checks"
-  default_prompt: "Use $rust-engineer to implement this Rust task using its bundled best-practice guidance, official documentation, and focused verification."
+  short_description: "Rust with rules and documentation checked first"
+  default_prompt: "Use $rust-engineer to check repository constraints, read the applicable bundled rules, and verify version-matched official documentation before coding, then implement and verify this Rust task."

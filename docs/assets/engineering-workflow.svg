@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="272" viewBox="0 0 1280 272" role="img" aria-labelledby="title desc">
   <title id="title">From a Rust request to a verified result</title>
-  <desc id="desc">Understand repository context, choose an approach, implement the change, and verify the result. The agent explains its findings and the checks performed.</desc>
+  <desc id="desc">Check repository constraints, read applicable rules and version-matched official documentation, choose an approach, implement the change, and verify the result. The agent explains its findings and the checks performed.</desc>
   <rect width="1280" height="272" rx="24" fill="#0d141d"/>
   <g font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
     <text x="48" y="54" fill="#f4f7fb" font-size="28" font-weight="700">From request to verified result</text>
@@ -16,7 +16,7 @@
       <path d="M936 157 H954 M947 150 L954 157 L947 164"/>
     </g>
     <g fill="#f89b72" font-size="14" font-weight="700" letter-spacing="1.5">
-      <text x="72" y="121">CONTEXT</text>
+      <text x="72" y="121">EVIDENCE GATE</text>
       <text x="378" y="121">DESIGN</text>
       <text x="684" y="121">IMPLEMENTATION</text>
       <text x="990" y="121" fill="#68d6c2">VERIFICATION</text>
@@ -28,7 +28,7 @@
       <text x="990" y="160">Check</text>
     </g>
     <g fill="#a8b6c6" font-size="16">
-      <text x="72" y="193">Read code and constraints</text>
+      <text x="72" y="193">Read code, rules and docs</text>
       <text x="378" y="193">Explain the tradeoffs</text>
       <text x="684" y="193">Make a focused change</text>
       <text x="990" y="193">Report tested behavior</text>

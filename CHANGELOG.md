@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.2.0 — 2026-10-29
+
+- Require repository, rules, and documentation checks before Rust code is written or changed.
+- Read applicable detailed guidance and verify primary documentation against actual compiler, dependency, and feature versions.
+- Record the evidence and resulting design decisions before implementation; keep unverified contracts behind the gate.
+- Revisit affected checks when scope or compatibility assumptions change, and check completed work against the same evidence.
+- Preserve the complete bundled guidance and the original standalone skill unchanged.
+
 ## v1.1.0 — 2026-10-29
 
 - Give Rust Engineer its own complete best-practices index, supporting examples, and upstream license.

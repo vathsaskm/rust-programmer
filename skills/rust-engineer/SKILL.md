@@ -1,6 +1,6 @@
 ---
 name: rust-engineer
-description: "Implement, debug, refactor, optimize, and review Rust code using bundled comprehensive Rust best-practice guidance, official documentation, idiomatic ownership, and focused verification. Use for Rust coding tasks in an existing or new crate."
+description: "Implement, debug, refactor, optimize, and review Rust code with required pre-coding checks of applicable bundled rules and version-matched official documentation, followed by idiomatic implementation and focused verification. Use for Rust coding tasks in an existing or new crate."
 license: MIT
 ---
 
@@ -8,27 +8,41 @@ license: MIT
 
 Deliver working Rust that fits the repository. Make the design as simple as the behavior permits, and spend verification effort where a failure would matter.
 
-## Establish the contract
+## Before coding: pass the evidence gate
 
-Read repository instructions, the affected code and callers, and the tests that define the behavior. Check the relevant Cargo manifest and pinned toolchain for edition, MSRV, features, and dependency versions. Preserve public behavior and compatibility unless the request calls for changing them. For a review request, return findings with file and line evidence; implement when the user requests changes.
+Before generating or editing Rust code, complete the contract, rules, and documentation checks below. Read code, reproduce failures, inspect dependencies, and run diagnostics as needed to establish the evidence. Begin implementation after the gate passes.
 
-Use narrow searches and targeted reads. Ask about a consequential ambiguity that the code cannot resolve, and continue independent work. Once the behavior and constraints are clear, start implementing.
+### 1. Establish the contract
 
-## Use the right source
+Read repository instructions, relevant project documentation, affected code and callers, and the tests that define the behavior. Check the Cargo manifest, lockfile, and pinned toolchain for edition, MSRV, features, and actual dependency versions. Identify the intended behavior, compatibility constraints, and meaningful risks. For a review request, establish the same evidence before returning findings; implement when the user requests changes.
 
-Inspect available capabilities before choosing a workaround. Prefer a connected source-control provider for repository and PR operations, local tools for local edits, and a supported review tool when available. Use the project's established database and authentication tooling when those systems are involved. If a preferred integration is unavailable, use an appropriate local tool or primary documentation.
+Use narrow searches and targeted reads. Resolve consequential ambiguity from the available code and documentation. Ask about an unresolved requirement when it changes the implementation, and continue independent investigation while waiting.
 
-For language semantics or standard-library contracts, consult the relevant official documentation. For a crate API or version-sensitive behavior, use Context7 when available and verify against the crate's own versioned docs or source. Firecrawl can extract a known page; ordinary web search can locate one. Local toolchain docs are useful when current online docs target a newer compiler. Report a lookup failure and use the next available source.
+### 2. Read the applicable rules
 
-When a language question, diagnostic, or documentation lookup needs a starting point, read [the official Rust reference map](references/official-rust.md) and follow the relevant link. Read only the material needed to settle the decision.
+Consult the [complete best-practices index](references/rust-guidance/INDEX.md), use its task-to-category mapping, and select the guidance relevant to the affected code. Open and read the corresponding detailed files in `references/rust-guidance/rules/`; the index headings alone do not satisfy this check. Prioritize the highest-impact applicable concerns.
 
-## Use the bundled best-practice guidance
+Connect the selected rule identifiers to concrete implementation decisions: ownership and lifetimes, error propagation, API compatibility, concurrency, safety, performance, or other affected behavior. Reconcile recommendations with repository requirements and verified API contracts. Explain a material departure. Add dependencies, optimizations, lint policies, and configuration changes when justified by the task.
 
-For implementation, debugging, refactoring, optimization, and review, consult the [complete best-practices index](references/rust-guidance/INDEX.md). It includes the priority categories, quick reference, task-to-category mapping, configuration examples, and source attribution. Follow its links to the detailed examples bundled in `references/rust-guidance/rules/`.
+### 3. Verify the relevant documentation
 
-Select the categories relevant to the task, prioritize the highest-impact concerns, and read the corresponding files before making a design or review decision. Ownership, error handling, memory behavior, and unsafe code deserve early attention when the affected code uses them. Other categories cover APIs, async work, concurrency, types, conversions, numeric safety, serialization, performance, testing, documentation, and project conventions.
+Read the primary documentation that determines the planned implementation. For language semantics and standard-library contracts, open the relevant official Rust documentation. Use the [official Rust reference map](references/official-rust.md) to locate it; the map itself is a starting point, not a substitute for reading the source.
 
-Use these recommendations alongside the repository's constraints, actual toolchain, and verified API contracts. Explain a material tradeoff rather than applying an example mechanically. Add a dependency, optimization, lint policy, or configuration change only when the task needs it.
+For a crate API or version-sensitive behavior, use Context7 when available to locate documentation, then verify against the crate's own versioned documentation or source for the resolved dependency and feature configuration. Check compatibility with the actual compiler and MSRV. If current online documentation targets a newer version, use installed toolchain documentation or the matching dependency source to establish the contract you will rely on.
+
+Use available documentation tools directly. Firecrawl can extract a known page; web search can locate a primary source. Keep lookup queries limited to necessary public symbols and redacted diagnostics. Read the relevant page or source section: memory, search snippets, and unopened links do not complete this check. For unsafe operations, verify the specific safety obligations; for concurrent work, verify the relevant runtime's cancellation, blocking, and synchronization contracts.
+
+If a lookup fails, report the actual failure and try another available primary source, including local documentation or dependency source. If a required contract remains unverified, keep the gate unmet for the affected implementation and continue work that does not depend on that contract. Do not claim the check passed without evidence.
+
+### 4. Record the decision and proceed
+
+Before the first code edit, give a concise progress update naming the rule identifiers read, the documentation actually consulted with links or local paths and applicable versions, the resulting design constraints or resolved tradeoffs, and the verification approach. Keep it proportional to the task; reuse evidence already checked for the same scope and versions.
+
+The gate passes when the intended behavior is understood, applicable detailed rules have been read, the contracts needed for the implementation are verified for the target versions, material conflicts are resolved, and the checks for the change are identified. Proceed with implementation once these conditions are met. Revisit the affected checks when the scope, dependency version, feature configuration, or safety assumptions change.
+
+## Use the right tools
+
+Inspect available capabilities before choosing a workaround. Prefer a connected source-control provider for repository and PR operations, local tools for local edits, and a supported review tool when available. Use the project's established database and authentication tooling when those systems are involved. If a preferred integration is unavailable, use an appropriate available tool or primary documentation.
 
 ## Implement idiomatic Rust
 
@@ -41,7 +55,7 @@ Use these recommendations alongside the repository's constraints, actual toolcha
 
 ## Verify in proportion to the change
 
-Follow existing required checks. For an ordinary Rust code change, format the touched code, run focused `cargo test` coverage, and use `cargo clippy` scoped to the affected package or targets with the repository's normal features and lint policy. Tests and Clippy already compile code; add a separate build or `cargo check` when it resolves a distinct concern.
+Check the finished change against the rule decisions and documentation contracts established before coding. Follow existing required checks. For an ordinary Rust code change, format the touched code, run focused `cargo test` coverage, and use `cargo clippy` scoped to the affected package or targets with the repository's normal features and lint policy. Tests and Clippy already compile code; add a separate build or `cargo check` when it resolves a distinct concern.
 
 Add a regression or behavior test when it exercises a meaningful contract. Documentation-only edits and mechanical changes can use lighter verification. Choose feature-matrix runs, Miri, concurrency model checking, fuzzing, or benchmarks when the actual change warrants them. Add new CI, broad lint policies, or verification infrastructure only when requested or necessary for the task.
 
@@ -49,4 +63,4 @@ Address failures caused by the change. Once appropriate checks pass, finish; rep
 
 ## Deliver
 
-Briefly report the resulting behavior, material design decisions, checks actually run, and unresolved limitations. Cite the primary documentation when a non-obvious API or language decision depends on it. Keep unrelated changes and speculative follow-up work out of the patch.
+Briefly report the resulting behavior, material design decisions, checks actually run, and unresolved limitations. Identify the applicable rules and primary documentation that informed material API, language, or safety decisions, reusing the pre-coding evidence when unchanged. Keep unrelated changes and speculative follow-up work out of the patch.
