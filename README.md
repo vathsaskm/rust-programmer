@@ -1,11 +1,11 @@
-# Rust
+# Rust Programmer
 
 **Independent agent and skill packages for practical Rust development.**
 
-[![Validation](https://github.com/vathsaskm/Rust/actions/workflows/check.yml/badge.svg)](https://github.com/vathsaskm/Rust/actions/workflows/check.yml)
+[![Validation](https://github.com/vathsaskm/rust-programmer/actions/workflows/check.yml/badge.svg)](https://github.com/vathsaskm/rust-programmer/actions/workflows/check.yml)
 [![MIT License](https://img.shields.io/badge/license-MIT-f08052)](LICENSE)
 
-[Latest release](https://github.com/vathsaskm/Rust/releases/latest) · [Download the agent](https://github.com/vathsaskm/Rust/releases/download/v1.1.0/rust-engineer-v1.1.0.zip) · [Download the skill](https://github.com/vathsaskm/Rust/releases/download/v1.1.0/rust-skills-v1.1.0.zip)
+[Latest release](https://github.com/vathsaskm/rust-programmer/releases/latest) · [Download the agent](https://github.com/vathsaskm/rust-programmer/releases/download/v1.1.0/rust-engineer-v1.1.0.zip) · [Download the skill](https://github.com/vathsaskm/rust-programmer/releases/download/v1.1.0/rust-skills-v1.1.0.zip)
 
 Rust Engineer helps an agent carry a Rust development task through investigation, implementation, and verification, using a complete bundled Rust best-practices reference. Rust Skills provides the original comprehensive guidance and examples for implementation, review, refactoring, and optimization.
 
@@ -26,11 +26,11 @@ Choose the package that fits your work. Each includes its own instructions, supp
 
 ### Download a release
 
-Get either ZIP from [v1.1.0](https://github.com/vathsaskm/Rust/releases/tag/v1.1.0):
+Get either ZIP from [v1.1.0](https://github.com/vathsaskm/rust-programmer/releases/tag/v1.1.0):
 
-- [Rust Engineer](https://github.com/vathsaskm/Rust/releases/download/v1.1.0/rust-engineer-v1.1.0.zip)
-- [Rust Skills](https://github.com/vathsaskm/Rust/releases/download/v1.1.0/rust-skills-v1.1.0.zip)
-- [SHA-256 checksums](https://github.com/vathsaskm/Rust/releases/download/v1.1.0/SHA256SUMS)
+- [Rust Engineer](https://github.com/vathsaskm/rust-programmer/releases/download/v1.1.0/rust-engineer-v1.1.0.zip)
+- [Rust Skills](https://github.com/vathsaskm/rust-programmer/releases/download/v1.1.0/rust-skills-v1.1.0.zip)
+- [SHA-256 checksums](https://github.com/vathsaskm/rust-programmer/releases/download/v1.1.0/SHA256SUMS)
 
 Compare your download's SHA-256 digest with the matching entry in `SHA256SUMS`, then extract the selected ZIP into your Codex skill directory. On macOS:
 
@@ -45,8 +45,8 @@ For Rust Skills, use `rust-skills-v1.1.0.zip` instead. Review an existing instal
 ### Install from source
 
 ```sh
-git clone https://github.com/vathsaskm/Rust.git
-cd Rust
+git clone https://github.com/vathsaskm/rust-programmer.git
+cd rust-programmer
 mkdir -p "$HOME/.agents/skills"
 ```
 
