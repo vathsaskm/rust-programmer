@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.1.0 — 2026-10-29
+
+- Give Rust Engineer its own complete best-practices index, supporting examples, and upstream license.
+- Restore the engineering workflow's explicit use of the comprehensive guidance while keeping installation independent.
+- Preserve the original standalone skill manifest and examples unchanged.
+- Add preservation checks that compare the embedded guidance with the original content.
+- Clarify that independence includes the complete supporting material in each package.
+
 ## v1.0.1 — 2026-10-29
 
 - Refresh the README with package details, separate download links, and installation examples.

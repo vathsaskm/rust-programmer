@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="552" viewBox="0 0 1280 552" role="img" aria-labelledby="title desc">
   <title id="title">Rust Engineer and Rust Skills are independent packages</title>
-  <desc id="desc">Rust Engineer contains an engineering workflow and reference map. Rust Skills contains focused guidance and examples. Each has its own content and license and installs independently.</desc>
+  <desc id="desc">Rust Engineer contains an engineering workflow and the complete best-practices guidance. Rust Skills contains the original complete guidance and examples. Each has its own full content and licenses and installs independently.</desc>
   <rect width="1280" height="552" rx="24" fill="#0d141d"/>
   <g font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
     <text x="64" y="72" fill="#f4f7fb" font-size="34" font-weight="700">Independent by design.</text>
@@ -27,8 +27,8 @@
     <text x="720" y="372" fill="#d3dde8" font-size="20">Reason about concrete tradeoffs</text>
     <rect x="96" y="399" width="488" height="30" rx="8" fill="#263342"/>
     <rect x="696" y="399" width="488" height="30" rx="8" fill="#263342"/>
-    <text x="112" y="420" fill="#bac8d8" font-size="14">Instructions + reference map + license</text>
-    <text x="712" y="420" fill="#bac8d8" font-size="14">Guidance index + examples + license</text>
+    <text x="112" y="420" fill="#bac8d8" font-size="14">Engineering workflow + complete guidance + licenses</text>
+    <text x="712" y="420" fill="#bac8d8" font-size="14">Complete guidance index + examples + license</text>
     <text x="640" y="505" text-anchor="middle" fill="#a8b6c6" font-size="18">Separate downloads. Separate installation. Complete supporting content.</text>
   </g>
 </svg>

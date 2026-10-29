@@ -1,6 +1,6 @@
 ---
 name: rust-engineer
-description: "Implement, debug, refactor, and review Rust code using official documentation, idiomatic ownership, and focused verification. Use for Rust coding tasks in an existing or new crate."
+description: "Implement, debug, refactor, optimize, and review Rust code using bundled comprehensive Rust best-practice guidance, official documentation, idiomatic ownership, and focused verification. Use for Rust coding tasks in an existing or new crate."
 license: MIT
 ---
 
@@ -22,7 +22,13 @@ For language semantics or standard-library contracts, consult the relevant offic
 
 When a language question, diagnostic, or documentation lookup needs a starting point, read [the official Rust reference map](references/official-rust.md) and follow the relevant link. Read only the material needed to settle the decision.
 
-Use the engineering guidance below and the bundled reference map directly. Resolve a specific decision against repository constraints, the actual toolchain, and the relevant official API contract. Add a dependency or optimization only when the task needs it.
+## Use the bundled best-practice guidance
+
+For implementation, debugging, refactoring, optimization, and review, consult the [complete best-practices index](references/rust-guidance/INDEX.md). It includes the priority categories, quick reference, task-to-category mapping, configuration examples, and source attribution. Follow its links to the detailed examples bundled in `references/rust-guidance/rules/`.
+
+Select the categories relevant to the task, prioritize the highest-impact concerns, and read the corresponding files before making a design or review decision. Ownership, error handling, memory behavior, and unsafe code deserve early attention when the affected code uses them. Other categories cover APIs, async work, concurrency, types, conversions, numeric safety, serialization, performance, testing, documentation, and project conventions.
+
+Use these recommendations alongside the repository's constraints, actual toolchain, and verified API contracts. Explain a material tradeoff rather than applying an example mechanically. Add a dependency, optimization, lint policy, or configuration change only when the task needs it.
 
 ## Implement idiomatic Rust
 

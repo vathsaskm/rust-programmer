@@ -5,9 +5,9 @@
 [![Validation](https://github.com/vathsaskm/Rust/actions/workflows/check.yml/badge.svg)](https://github.com/vathsaskm/Rust/actions/workflows/check.yml)
 [![MIT License](https://img.shields.io/badge/license-MIT-f08052)](LICENSE)
 
-[Latest release](https://github.com/vathsaskm/Rust/releases/latest) · [Download the agent](https://github.com/vathsaskm/Rust/releases/download/v1.0.1/rust-engineer-v1.0.1.zip) · [Download the skill](https://github.com/vathsaskm/Rust/releases/download/v1.0.1/rust-skills-v1.0.1.zip)
+[Latest release](https://github.com/vathsaskm/Rust/releases/latest) · [Download the agent](https://github.com/vathsaskm/Rust/releases/download/v1.1.0/rust-engineer-v1.1.0.zip) · [Download the skill](https://github.com/vathsaskm/Rust/releases/download/v1.1.0/rust-skills-v1.1.0.zip)
 
-Rust Engineer helps an agent carry a Rust development task through investigation, implementation, and verification. Rust Skills provides focused guidance and examples for understanding code and making design decisions.
+Rust Engineer helps an agent carry a Rust development task through investigation, implementation, and verification, using a complete bundled Rust best-practices reference. Rust Skills provides the original comprehensive guidance and examples for implementation, review, refactoring, and optimization.
 
 Choose the package that fits your work. Each includes its own instructions, supporting content, and license, and installs on its own.
 
@@ -19,28 +19,28 @@ Choose the package that fits your work. Each includes its own instructions, supp
 | --- | --- | --- |
 | **Purpose** | Carry a Rust task through to a verified result | Explain a Rust concept or support a specific design decision |
 | **Typical work** | Implementation, debugging, refactoring, and code review | Targeted explanations, examples, and tradeoff analysis |
-| **Included** | Engineering instructions, a reference map, display metadata, and a license | A searchable guidance index, supporting examples, and a license |
+| **Included** | Engineering instructions, the complete best-practices index and examples, a reference map, display metadata, and licenses | The complete original guidance index, supporting examples, and a license |
 | **Installation** | Install the agent package by itself | Install the skill package by itself |
 
 ## Install
 
 ### Download a release
 
-Get either ZIP from [v1.0.1](https://github.com/vathsaskm/Rust/releases/tag/v1.0.1):
+Get either ZIP from [v1.1.0](https://github.com/vathsaskm/Rust/releases/tag/v1.1.0):
 
-- [Rust Engineer](https://github.com/vathsaskm/Rust/releases/download/v1.0.1/rust-engineer-v1.0.1.zip)
-- [Rust Skills](https://github.com/vathsaskm/Rust/releases/download/v1.0.1/rust-skills-v1.0.1.zip)
-- [SHA-256 checksums](https://github.com/vathsaskm/Rust/releases/download/v1.0.1/SHA256SUMS)
+- [Rust Engineer](https://github.com/vathsaskm/Rust/releases/download/v1.1.0/rust-engineer-v1.1.0.zip)
+- [Rust Skills](https://github.com/vathsaskm/Rust/releases/download/v1.1.0/rust-skills-v1.1.0.zip)
+- [SHA-256 checksums](https://github.com/vathsaskm/Rust/releases/download/v1.1.0/SHA256SUMS)
 
 Compare your download's SHA-256 digest with the matching entry in `SHA256SUMS`, then extract the selected ZIP into your Codex skill directory. On macOS:
 
 ```sh
-shasum -a 256 rust-engineer-v1.0.1.zip
+shasum -a 256 rust-engineer-v1.1.0.zip
 mkdir -p "$HOME/.agents/skills"
-unzip rust-engineer-v1.0.1.zip -d "$HOME/.agents/skills"
+unzip rust-engineer-v1.1.0.zip -d "$HOME/.agents/skills"
 ```
 
-For Rust Skills, use `rust-skills-v1.0.1.zip` instead. Review an existing installation before replacing it.
+For Rust Skills, use `rust-skills-v1.1.0.zip` instead. Review an existing installation before replacing it.
 
 ### Install from source
 
@@ -96,7 +96,9 @@ Start with the [skill index](skills/rust-skills/SKILL.md) and load the supportin
 
 ## Independence and release quality
 
-Each ZIP is validated in isolation, with the other package absent. Documentation references stay within their package or point to public reference material. There are no shared package files or cross-package imports.
+Each ZIP is validated in isolation, with the other package absent. Rust Engineer carries its own complete copy of the best-practices reference and examples; it does not require a separate installation. Rust Skills retains its original complete manifest and supporting material. Documentation references stay within their package or point to public reference material.
+
+Repository validation also compares the embedded index, examples, and upstream license against the original source, so packaging changes cannot silently drop or shorten the guidance.
 
 Releases include separate archives and SHA-256 checksums. Validation covers package structure, local references, archive metadata, and common private-data patterns. Gitleaks scans published files, Git history, and release archives; GitHub repeats validation and scanning in CI.
 
@@ -106,6 +108,7 @@ The packages contain no account credentials or machine configuration. Scan resul
 
 - [Agent instructions](skills/rust-engineer/SKILL.md)
 - [Agent reference map](skills/rust-engineer/references/official-rust.md)
+- [Agent’s complete best-practices reference](skills/rust-engineer/references/rust-guidance/INDEX.md)
 - [Skill index](skills/rust-skills/SKILL.md)
 - [Release history](CHANGELOG.md)
 - [Validation script](scripts/verify_release.py)

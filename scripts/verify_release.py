@@ -91,7 +91,9 @@ def inspect_package(root, errors):
         return
     required = [root / "SKILL.md", root / "LICENSE"]
     if name == "rust-engineer":
-        required += [root / "agents/openai.yaml", root / "references/official-rust.md"]
+        required += [root / "agents/openai.yaml", root / "references/official-rust.md",
+                     root / "references/rust-guidance/INDEX.md", root / "references/rust-guidance/LICENSE",
+                     root / "references/rust-guidance/ATTRIBUTION.md"]
     for path in required:
         if not path.is_file():
             errors.append(f"{name}: missing required file {path.name}")
@@ -111,15 +113,32 @@ def inspect_package(root, errors):
         if not path.is_file():
             continue
         content = path.read_text(encoding="utf-8")
-        if peer in content.lower():
+        instructions = re.sub(r"https?://[^\s<>\)]+", "", content)
+        if peer in instructions.lower():
             errors.append(f"{name}/{path.name}: cross-package reference")
         if path.suffix == ".md":
             inspect_links(path, content, root, errors)
-    if name == "rust-skills":
-        rules = list((root / "rules").glob("*.md"))
-        categories = Counter(path.name.split("-", 1)[0] for path in rules)
-        if len(rules) != 265 or len(categories) != 26:
-            errors.append("rust-skills: expected 265 rules across 26 categories")
+    guidance = root if name == "rust-skills" else root / "references/rust-guidance"
+    rules = list((guidance / "rules").glob("*.md"))
+    categories = Counter(path.name.split("-", 1)[0] for path in rules)
+    if len(rules) != 265 or len(categories) != 26:
+        errors.append(f"{name}: incomplete best-practice guidance")
+
+
+def inspect_guidance_preservation(root, errors):
+    source = root / "skills/rust-skills"
+    bundled = root / "skills/rust-engineer/references/rust-guidance"
+    manifest = source / "SKILL.md"
+    index = bundled / "INDEX.md"
+    if manifest.is_file() and index.is_file():
+        body = re.sub(r"\A---\n.*?\n---\n\n?", "", manifest.read_text(encoding="utf-8"), count=1, flags=re.S)
+        if body != index.read_text(encoding="utf-8"):
+            errors.append("Bundled guidance index differs from the complete original body")
+    for relative in [Path("LICENSE")] + sorted(path.relative_to(source) for path in (source / "rules").glob("*.md")):
+        original = source / relative
+        copied = bundled / relative
+        if not copied.is_file() or original.read_bytes() != copied.read_bytes():
+            errors.append(f"Bundled guidance is missing or altered: {relative.name}")
 
 
 def main():
@@ -152,6 +171,8 @@ def main():
     packages = [root] if args.package else [root / "skills" / name for name in PACKAGE_NAMES]
     for package in packages:
         inspect_package(package, errors)
+    if not args.package:
+        inspect_guidance_preservation(root, errors)
     if errors:
         print("Release validation failed:")
         print("\n".join(f"- {item}" for item in errors))
